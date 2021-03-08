@@ -1,0 +1,1 @@
+web: gunicorn textToAsl.wsgi --log-file -
