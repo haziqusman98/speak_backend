@@ -1,1 +1,1 @@
-web: gunicorn textToAsl.wsgi --log-file -
+web: gunicorn speak_backend.wsgi --log-file -
