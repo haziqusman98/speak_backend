@@ -25,7 +25,7 @@ SECRET_KEY = '-!s8_+od&@3i-mh^=jrkqcc=oe9n-ls_ru2xag%dgicg(vy767'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['speak-backend.herokuapp.com']
 
 
 # Application definition
@@ -134,12 +134,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join('C:/Users/Haziq Usman/AppData/Local/Programs/Python/Python37/Scripts/speak_backend', 'static'),
 )
 
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
