@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Sign
 from .serializers import SignSerializer
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def get_signs(request):
     text = request.data.get('text',None)
     signs=[]
