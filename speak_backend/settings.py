@@ -25,7 +25,7 @@ SECRET_KEY = '-!s8_+od&@3i-mh^=jrkqcc=oe9n-ls_ru2xag%dgicg(vy767'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['speak-backend.herokuapp.com']
+ALLOWED_HOSTS = ['speak-backend.herokuapp.com','localhost']
 
 
 # Application definition
