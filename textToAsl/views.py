@@ -7,7 +7,7 @@ from .serializers import SignSerializer
 
 @api_view(['GET'])
 def get_signs(request):
-    text = request.GET['text']
+    text = request.data['text']
     signs=[]
     if text:
         for char in text:
