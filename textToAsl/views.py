@@ -14,4 +14,4 @@ def get_signs(request):
             signs.append(SignSerializer(Sign.objects.filter(character__iexact=char).first()).data)
         return Response(signs)
     else:
-        return Response(request.data)
+        return Response(request)
