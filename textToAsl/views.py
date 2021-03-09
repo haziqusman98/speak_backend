@@ -13,5 +13,5 @@ def get_signs(request):
         for char in text:
             signs.append(SignSerializer(Sign.objects.filter(character__iexact=char).first()).data)
         return Response(signs)
-
-
+    else:
+        return Response("Invalid request!")
