@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Sign
 from .serializers import SignSerializer
+from django.core.exceptions import FieldDoesNotExist
 
 @api_view(['GET'])
 def get_signs(request):
