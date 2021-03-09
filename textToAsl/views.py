@@ -7,9 +7,9 @@ from .serializers import SignSerializer
 
 @api_view(['GET'])
 def get_signs(request):
-    text = request.data.get('text',None)
+    text = request.GET['text']
     signs=[]
-    if text is not None:
+    if text:
         for char in text:
             signs.append(SignSerializer(Sign.objects.filter(character__iexact=char).first()).data)
         return Response(signs)
