@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import FieldDoesNotExist
 
 class Sign(models.Model):
     character = models.CharField(max_length=1)
