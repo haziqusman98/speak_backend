@@ -4,7 +4,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Sign
 from .serializers import SignSerializer
-from django.core.exceptions import FieldDoesNotExist
 
 @api_view(['GET'])
 def get_signs(request):
@@ -12,8 +11,7 @@ def get_signs(request):
     signs=[]
     if text is not None:
         for char in text:
-            if char!=" ":
-                signs.append(SignSerializer(Sign.objects.filter(character__iexact=char).first()).data)
+            signs.append(SignSerializer(Sign.objects.filter(character__iexact=char).first()).data)
         return Response(signs)
 
 
