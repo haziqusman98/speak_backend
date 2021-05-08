@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .models import Sign
 from .serializers import SignSerializer
 from .apps import TexttoaslConfig
+import cv2
 
 @api_view(['POST'])
 def get_signs(request):
@@ -21,3 +22,9 @@ def get_signs(request):
 def get_gloss(request):
     vid = request.data.get("vid")
     return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
+
+@api_view(['GET'])
+def verify_blob(request):
+    vid = request.data.get("vid")
+    vidcap = cv2.VideoCapture(vid)
+    return Response(vidcap.read()[0])
