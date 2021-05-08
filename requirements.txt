@@ -16,5 +16,6 @@ django-cors-headers
 dj-static==0.0.6
 django-toolbelt
 opencv-python
+numpy
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.6.0+cpu
