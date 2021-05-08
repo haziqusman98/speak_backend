@@ -18,6 +18,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('textToAsl/', include('textToAsl.urls'))
+    path('textToAsl/', include('textToAsl.urls')),
+    path('aslToText/',include('textToAsl.urls'))
 ]
 

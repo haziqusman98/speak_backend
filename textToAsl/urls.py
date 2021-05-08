@@ -1,8 +1,9 @@
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import get_signs
+from .views import get_signs,get_gloss
 
 urlpatterns = [
     path('signs', get_signs),
+    path('gloss',get_gloss),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

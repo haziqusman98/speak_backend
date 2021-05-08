@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Sign
 from .serializers import SignSerializer
+from .apps import TexttoaslConfig
 
 @api_view(['POST'])
 def get_signs(request):
@@ -15,3 +16,8 @@ def get_signs(request):
         return Response(signs)
     else:
         return Response(request)
+
+@api_view(['GET'])
+def get_gloss(request):
+    vid = request.data.get("vid")
+    return Response(TexttoaslConfig.predictor.predict(vid))
