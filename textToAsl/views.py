@@ -23,7 +23,7 @@ def get_gloss(request):
     vid = request.data.get("vid")
     return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
 
-@api_view(['GET'])
+@api_view(['POST'])
 def verify_blob(request):
     vid = request.data.get("vid")
     vidcap = cv2.VideoCapture(vid)
