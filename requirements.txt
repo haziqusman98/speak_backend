@@ -10,6 +10,7 @@ pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2018.5
 PyYAML==5.3.1
+config
 sqlparse==0.4.1
 whitenoise==5.2.0
 django-cors-headers
