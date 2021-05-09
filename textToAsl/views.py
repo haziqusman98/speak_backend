@@ -18,7 +18,7 @@ def get_signs(request):
     else:
         return Response(request)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_gloss(request):
     vid = request.data.get("vid")
     return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
