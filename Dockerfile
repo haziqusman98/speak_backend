@@ -35,4 +35,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput --clear
 
 # Run application
-CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "speak_backend.wsgi:speak_backend"]
+CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "speak_backend.wsgi:application"]
