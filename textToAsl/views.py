@@ -26,7 +26,7 @@ def get_gloss(request):
 @api_view(['POST'])
 def verify_blob(request):
     vid = request.data.get("vid")
-    # f = open("request.txt",'w')
-    # f.write(request)
+    f = open("request.txt",'w')
+    f.write(request)
     vidcap = cv2.VideoCapture(vid)
     return Response(vidcap.read()[0])
