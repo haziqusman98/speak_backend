@@ -25,6 +25,8 @@ def get_gloss(request):
 
 @api_view(['POST'])
 def verify_blob(request):
+    if request.FILES['vid']:
+        return Response("True!")
     vid = request.data.get("vid")
     # f = open("request.txt",'w')
     # f.write(request)
