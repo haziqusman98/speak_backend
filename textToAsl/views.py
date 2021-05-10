@@ -25,7 +25,7 @@ def get_gloss(request):
 
 @api_view(['POST'])
 def verify_blob(request):
-    vid = request.FILES.get("vid")
+    vid = request.FILES.get("vid",None)
     if vid is not None:
         return Response("True")
     return Response("False")
