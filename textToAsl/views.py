@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Sign
+from io import BytesIO
 from .serializers import SignSerializer
 from .apps import TexttoaslConfig
 import cv2
@@ -25,7 +26,7 @@ def get_gloss(request):
 
 @api_view(['POST'])
 def verify_blob(request):
-    vid = request.FILES.get("vid")
+    vid = request.data.get("vid")
     # f = open("request.txt",'w')
     # f.write(request)
     vidcap = cv2.VideoCapture(vid)
