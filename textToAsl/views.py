@@ -29,4 +29,4 @@ def verify_blob(request):
     # f = open("request.txt",'w')
     # f.write(request)
     vidcap = cv2.VideoCapture(vid)
-    return Response(vidcap.read()[0])
+    return Response(vid)
