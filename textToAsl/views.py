@@ -7,6 +7,19 @@ from .serializers import SignSerializer
 from .apps import TexttoaslConfig
 import cv2
 
+def verify_blob(vid):
+    if vid is not None:
+        with open("temp.mp4", "wb") as vid_writer:
+            vid_stream = vid.read()
+            vid_writer.write(vid_stream)
+        try:
+            vidcap = cv2.VideoCapture("temp.mp4")
+            return vidcap.read()[0]
+        except:
+            return False
+    else:
+        return False
+
 @api_view(['POST'])
 def get_signs(request):
     text = request.data.get('text',None)
@@ -20,25 +33,9 @@ def get_signs(request):
 
 @api_view(['POST'])
 def get_gloss(request):
-    vid = request.data.get("vid")
-    return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
-
-@api_view(['POST'])
-def verify_blob(request):
     vid = request.FILES.get("vid",None)
-    if vid is not None:
-        with open("temp.mp4", "wb") as vid_writer:
-            vid_stream = vid.read()
-            vid_writer.write(vid_stream)
-        try:
-            vidcap = cv2.VideoCapture("temp.mp4")
-            return Response(vidcap.read()[0])
-        except:
-            return Response("Still can't read!")
+    if verify_blob(vid):
+        return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
     else:
-        return Response("False")
-
-    # f = open("request.txt",'w')
-    # f.write(request)
-    # vidcap = cv2.VideoCapture(vid)
+        return Response("Invalid blob")
     
