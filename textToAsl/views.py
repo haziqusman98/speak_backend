@@ -30,7 +30,11 @@ def verify_blob(request):
         with open("temp.mp4", "wb") as vid_writer:
             vid_stream = vid.read()
             vid_writer.write(vid_stream)
-        return Response("File saved!")
+        try:
+            vidcap = cv2.VideoCapture("temp.mp4")
+            return Response(vidcap.read()[0])
+        except:
+            return Response("Still can't read!")
     else:
         return Response("False")
 
