@@ -30,7 +30,7 @@ def verify_blob(request):
         vid_stream = vid.read()
         vidcap = cv2.VideoCapture(vid_stream)
         if vidcap.isOpened():
-            return Response(vidcap.read()[0])
+            return Response("True")
         else:
             return Response("Error!")
     return Response("False")
