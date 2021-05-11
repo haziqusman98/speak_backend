@@ -27,15 +27,10 @@ def get_gloss(request):
 def verify_blob(request):
     vid = request.FILES.get("vid",None)
     if vid is not None:
-        vid_stream = vid.read()
-        try:
-            vidcap = cv2.VideoCapture(vid_stream)
-        except:
-            return Response("Can't read!")
-        if vidcap.isOpened():
-            return Response("True")
-        else:
-            return Response("Error!")
+        with open("temp.mp4", "wb") as vid_writer:
+            vid_stream = vid.read()
+            vid_writer.write(vid_stream)
+            return Response("File saved!")
     return Response("False")
 
     # f = open("request.txt",'w')
