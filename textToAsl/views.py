@@ -28,7 +28,10 @@ def verify_blob(request):
     vid = request.FILES.get("vid",None)
     if vid is not None:
         vid_stream = vid.read()
-        vidcap = cv2.VideoCapture(vid_stream)
+        try:
+            vidcap = cv2.VideoCapture(vid_stream)
+        except:
+            return Response("Can't read!")
         if vidcap.isOpened():
             return Response("True")
         else:
