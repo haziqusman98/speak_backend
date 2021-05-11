@@ -28,7 +28,11 @@ def verify_blob(request):
     vid = request.FILES.get("vid",None)
     if vid is not None:
         vid_stream = vid.read()
-        return Response({"True":vid_stream})
+        vidcap = cv2.VideoCapture(vid_stream)
+        if vidcap.isOpened():
+            return Response(vidcap.read()[0])
+        else:
+            return Response("Error!")
     return Response("False")
 
     # f = open("request.txt",'w')
