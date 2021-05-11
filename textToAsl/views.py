@@ -34,8 +34,9 @@ def get_signs(request):
 @api_view(['POST'])
 def get_gloss(request):
     vid = request.FILES.get("vid",None)
-    if verify_blob(vid):
-        return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
-    else:
-        return Response("Invalid blob")
+    return Response(verify_blob(vid))
+    # if verify_blob(vid):
+    #     return Response({"gloss":TexttoaslConfig.predictor.predict(vid)})
+    # else:
+    #     return Response("Invalid blob")
     
