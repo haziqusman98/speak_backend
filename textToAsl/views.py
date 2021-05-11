@@ -30,8 +30,9 @@ def verify_blob(request):
         with open("temp.mp4", "wb") as vid_writer:
             vid_stream = vid.read()
             vid_writer.write(vid_stream)
-            return Response("File saved!")
-    return Response("False")
+        return Response("File saved!")
+    else:
+        return Response("False")
 
     # f = open("request.txt",'w')
     # f.write(request)
